@@ -1,26 +1,277 @@
 @import "tailwindcss";
 
+/* ============================================================
+   CONNEXXION ENERGY — Design System
+   Brand: leaf/emerald green (logo) + petroleum dark + gold
+   ============================================================ */
+
+@theme {
+  /* Cinematic dark foundation (petroleum green-black) */
+  --color-ink: #061310;
+  --color-ink-soft: #0a1d16;
+  --color-panel: #0f291d;
+  --color-panel-2: #143524;
+
+  /* Brand greens (sampled from logo) */
+  --color-brand: #34a24b;
+  --color-brand-bright: #4cbb63;
+  --color-brand-deep: #1b7a41;
+  --color-leaf: #8bc53f;
+
+  /* Gold / bronze — boardroom luxury + energy warmth */
+  --color-gold: #c9a24c;
+  --color-gold-soft: #e3c57e;
+
+  /* Neutrals */
+  --color-cream: #f4f2e9;
+  --color-sand: #e6e1d2;
+  --color-sage: #9cb1a3;
+  --color-paper: #f6f4ec;
+
+  /* Fonts (wired in layout.tsx via next/font) */
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- Base ---------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  border-color: color-mix(in oklab, var(--color-cream) 12%, transparent);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-ink);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv01";
+  overflow-x: hidden;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-leaf) 35%, transparent);
+  color: #fff;
+}
+
+/* Subtle, premium scrollbar */
+::-webkit-scrollbar { width: 11px; }
+::-webkit-scrollbar-track { background: var(--color-ink); }
+::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--color-brand) 45%, var(--color-ink));
+  border-radius: 999px;
+  border: 3px solid var(--color-ink);
+}
+
+/* ---------- Typography helpers ---------- */
+.font-display { font-family: var(--font-display); }
+
+.display-xl {
+  font-family: var(--font-display);
+  font-weight: 300;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  font-optical-sizing: auto;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.text-balance { text-wrap: balance; }
+.text-pretty { text-wrap: pretty; }
+
+.text-gradient-gold {
+  background: linear-gradient(100deg, var(--color-gold-soft), var(--color-gold) 55%, #b07d2e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-leaf {
+  background: linear-gradient(100deg, var(--color-leaf), var(--color-brand-bright) 60%, var(--color-brand-deep));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Surfaces ---------- */
+.glass {
+  background: color-mix(in oklab, var(--color-ink) 55%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid color-mix(in oklab, var(--color-cream) 10%, transparent);
+}
+
+.card-dark {
+  background:
+    linear-gradient(160deg,
+      color-mix(in oklab, var(--color-panel) 90%, transparent),
+      color-mix(in oklab, var(--color-ink-soft) 92%, transparent));
+  border: 1px solid color-mix(in oklab, var(--color-cream) 8%, transparent);
+}
+
+.hairline { border-color: color-mix(in oklab, var(--color-cream) 12%, transparent); }
+.hairline-dark { border-color: color-mix(in oklab, #000 18%, transparent); }
+
+/* Gold rule used under eyebrows */
+.rule-gold {
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-gold), transparent);
+}
+
+/* ---------- Film grain (kills the "flat AI" look) ---------- */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Fixed top chrome (ticker + navbar) ---------- */
+:root { --chrome-h: 104px; }
+.pt-chrome { padding-top: var(--chrome-h); }
+.min-h-hero { min-height: 100svh; }
+
+/* ---------- Section helpers ---------- */
+.section { padding-block: clamp(5rem, 10vw, 9rem); }
+.container-cnx {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  border-radius: 999px;
+  padding: 0.95rem 1.6rem;
+  cursor: pointer;
+  transition: all 0.35s var(--ease-out-expo);
+  will-change: transform;
+}
+.btn-primary {
+  background: linear-gradient(120deg, var(--color-brand-bright), var(--color-brand-deep));
+  color: #fff;
+  box-shadow: 0 10px 30px -12px color-mix(in oklab, var(--color-brand) 80%, transparent);
+}
+.btn-primary:hover {
+  box-shadow: 0 18px 44px -14px color-mix(in oklab, var(--color-brand) 95%, transparent);
+  transform: translateY(-2px);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--color-cream);
+  border: 1px solid color-mix(in oklab, var(--color-cream) 22%, transparent);
+}
+.btn-ghost:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold-soft);
+}
+
+/* Animated underline link */
+.link-underline {
+  position: relative;
+  padding-bottom: 2px;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s var(--ease-out-expo);
+}
+.link-underline:hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* ---------- Ken Burns ---------- */
+@keyframes kenburns {
+  0%   { transform: scale(1.04) translate3d(0, 0, 0); }
+  100% { transform: scale(1.18) translate3d(-1.2%, -1.6%, 0); }
+}
+.animate-kenburns { animation: kenburns 14s ease-out forwards; }
+
+/* ---------- Marquee (price ticker) ---------- */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee var(--marquee-duration, 48s) linear infinite;
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+
+/* ---------- Float / glow ambient ---------- */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
+.animate-float { animation: floaty 9s ease-in-out infinite; }
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+/* Radial brand glow */
+.glow-brand {
+  background: radial-gradient(closest-side,
+    color-mix(in oklab, var(--color-brand) 55%, transparent),
+    transparent 75%);
+}
+.glow-gold {
+  background: radial-gradient(closest-side,
+    color-mix(in oklab, var(--color-gold) 45%, transparent),
+    transparent 72%);
+}
+
+/* Tabular numerals for prices/stats */
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* ---------- Light section variant ---------- */
+.section-light {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+.section-light .text-sage { color: #5b6b60; }
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-kenburns { transform: scale(1.06); }
 }
