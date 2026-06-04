@@ -4,7 +4,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { CTA } from "@/components/home/CTA";
-import { chairman, team } from "@/lib/content";
+import { team } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Our Team",
@@ -12,7 +12,46 @@ export const metadata: Metadata = {
     "The leadership steering Connexxion Energy across the Upstream, Midstream and Downstream value chain.",
 };
 
+function TeamCard({ member }: { member: any }) {
+  return (
+    <article className="group card-dark w-56 overflow-hidden rounded-2xl border border-cream/10 transition-all duration-300 hover:border-gold/40 hover:-translate-y-0.5 shadow-lg">
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink-soft">
+        {member.image ? (
+          <Image
+            src={member.image}
+            alt={`${member.name}, ${member.title}`}
+            fill
+            sizes="224px"
+            className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
+          />
+        ) : (
+          <span className="absolute inset-0 grid place-items-center bg-gradient-to-br from-gold-soft to-gold font-display text-2xl font-semibold text-ink">
+            {member.initials}
+          </span>
+        )}
+      </div>
+      <div className="p-4 text-center">
+        <h3 className="font-display text-sm font-semibold leading-snug text-cream group-hover:text-gold-soft transition-colors min-h-[2.5rem] flex items-center justify-center">
+          {member.name}
+        </h3>
+        <p className="mt-1 text-[10px] font-bold uppercase tracking-wider text-brand-bright min-h-[1.5rem] flex items-center justify-center">
+          {member.title}
+        </p>
+      </div>
+    </article>
+  );
+}
+
 export default function TeamPage() {
+  const gceo = team[0];
+  const coo = team[1];
+  const cfo = team[2];
+  const cbo = team[3];
+  const engineering = team[4];
+  const legal = team[5];
+  const secretary = team[6];
+  const it = team[7];
+
   return (
     <>
       <PageHero
@@ -30,94 +69,158 @@ export default function TeamPage() {
 
       <section className="section bg-ink">
         <div className="container-cnx">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl mx-auto text-center mb-16">
             <Reveal>
-              <Eyebrow tone="leaf">Leadership</Eyebrow>
+              <Eyebrow tone="leaf">Structure</Eyebrow>
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="display-xl mt-6 text-[clamp(2rem,4.4vw,3.2rem)] text-cream">
-                Stewards of stakeholder value
+                Organizational Hierarchy
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-6 text-pretty leading-relaxed text-sage">
-                Our team brings together decades of experience across exploration, engineering,
-                trading and finance — united by a commitment to safety, integrity and growth.
+                Our leadership is structured to drive operational excellence, strategic commercial growth,
+                and strict regulatory compliance across our upstream, midstream, and downstream operations.
               </p>
             </Reveal>
           </div>
 
-          {/* Chairman — featured, centered */}
-          <Reveal delay={0.1} className="mt-16 flex justify-center">
-            <article className="group card-dark w-full max-w-md rounded-2xl p-8 text-center transition-colors duration-300 hover:border-gold/40">
-              {chairman.image ? (
-                <span className="relative mx-auto block h-24 w-24 overflow-hidden rounded-full ring-1 ring-gold/30">
-                  <Image
-                    src={chairman.image}
-                    alt={`${chairman.name}, ${chairman.title}`}
-                    fill
-                    sizes="96px"
-                    className="object-cover"
-                  />
-                </span>
-              ) : (
-                <span className="mx-auto grid h-20 w-20 place-items-center rounded-full bg-gradient-to-br from-gold-soft to-gold font-display text-xl font-semibold text-ink ring-1 ring-gold/30">
-                  {chairman.initials}
-                </span>
-              )}
-              <h3 className="mt-5 font-display text-xl leading-tight text-cream">{chairman.name}</h3>
-              <p className="mt-1.5 text-sm text-gold-soft">{chairman.title}</p>
-              <div className="mx-auto mt-6 h-px w-16 bg-cream/10" />
-              <p className="mx-auto mt-5 max-w-sm text-sm leading-relaxed text-sage">
-                Providing strategic stewardship and governance — guiding Connexxion Energy&rsquo;s
-                long-term vision with integrity and an absolute commitment to stakeholder value.
-              </p>
-            </article>
-          </Reveal>
+          {/* Organogram Tree for Desktop (lg and up) */}
+          <div className="hidden lg:flex flex-col items-center w-full">
+            {/* Level 1: GCEO */}
+            <div className="relative flex flex-col items-center">
+              <Reveal>
+                <TeamCard member={gceo} />
+              </Reveal>
+              {/* Connector line down */}
+              <div className="h-12 w-px bg-gold/30" />
+            </div>
 
-          <RevealGroup stagger={0.07} className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {team.map((member) => (
-              <RevealItem key={member.name}>
-                <article className="group card-dark h-full rounded-2xl p-7 transition-colors duration-300 hover:border-gold/40">
-                  <div className="flex items-center gap-4">
-                    {member.image ? (
-                      <span className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full ring-1 ring-cream/15">
-                        <Image
-                          src={member.image}
-                          alt={`${member.name}, ${member.title}`}
-                          fill
-                          sizes="64px"
-                          className="object-cover"
-                        />
-                      </span>
-                    ) : (
-                      <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-gradient-to-br from-brand-bright to-brand-deep font-display text-lg font-semibold text-white ring-1 ring-cream/10">
-                        {member.initials}
-                      </span>
-                    )}
-                    <div>
-                      <h3 className="font-display text-lg leading-tight text-cream">
-                        {member.name}
-                      </h3>
-                      <p className="mt-1 text-sm text-gold-soft">{member.title}</p>
-                    </div>
-                  </div>
-                  <div className="mt-6 h-px w-full bg-cream/10" />
-                  <p className="mt-5 text-sm leading-relaxed text-sage">
-                    Driving Connexxion Energy&rsquo;s mission with technical rigour and an absolute
-                    commitment to international standards.
-                  </p>
-                </article>
-              </RevealItem>
-            ))}
-          </RevealGroup>
+            {/* Level 2: CBO, COO, CFO */}
+            <div className="relative w-full max-w-5xl flex justify-center">
+              {/* Horizontal connecting bridge */}
+              <div className="absolute top-0 left-[16.6%] right-[16.6%] h-px bg-gold/30" />
+              
+              <div className="grid grid-cols-3 gap-12 w-full pt-12">
+                {/* CBO */}
+                <div className="flex flex-col items-center relative">
+                  {/* Vertical line up to bridge */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-gold/30" />
+                  <Reveal delay={0.05}>
+                    <TeamCard member={cbo} />
+                  </Reveal>
+                </div>
 
-          <Reveal delay={0.1}>
-            <p className="mt-10 text-sm text-sage/70">
-              Leadership profiles are illustrative placeholders — real names, photographs and
-              biographies can be added on request.
-            </p>
-          </Reveal>
+                {/* COO */}
+                <div className="flex flex-col items-center relative">
+                  {/* Vertical line up to bridge */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-gold/30" />
+                  <Reveal delay={0.1}>
+                    <TeamCard member={coo} />
+                  </Reveal>
+                  {/* Vertical line down to connect Level 3 */}
+                  <div className="h-12 w-px bg-gold/30" />
+                </div>
+
+                {/* CFO */}
+                <div className="flex flex-col items-center relative">
+                  {/* Vertical line up to bridge */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-gold/30" />
+                  <Reveal delay={0.15}>
+                    <TeamCard member={cfo} />
+                  </Reveal>
+                </div>
+              </div>
+            </div>
+
+            {/* Level 3: Legal, Engineering, Secretary, IT */}
+            <div className="relative w-full max-w-5xl flex justify-center">
+              {/* Horizontal connecting bridge */}
+              <div className="absolute top-0 left-[12.5%] right-[12.5%] h-px bg-gold/30" />
+
+              <div className="grid grid-cols-4 gap-12 w-full pt-12">
+                {/* Legal / Company Secretary */}
+                <div className="flex flex-col items-center relative">
+                  {/* Vertical line up to bridge */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-gold/30" />
+                  <Reveal delay={0.2}>
+                    <TeamCard member={legal} />
+                  </Reveal>
+                </div>
+
+                {/* Engineering Facility Manager */}
+                <div className="flex flex-col items-center relative">
+                  {/* Vertical line up to bridge */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-gold/30" />
+                  <Reveal delay={0.25}>
+                    <TeamCard member={engineering} />
+                  </Reveal>
+                </div>
+
+                {/* Secretary to the CEO */}
+                <div className="flex flex-col items-center relative">
+                  {/* Vertical line up to bridge */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-gold/30" />
+                  <Reveal delay={0.3}>
+                    <TeamCard member={secretary} />
+                  </Reveal>
+                </div>
+
+                {/* IT Manager */}
+                <div className="flex flex-col items-center relative">
+                  {/* Vertical line up to bridge */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-gold/30" />
+                  <Reveal delay={0.35}>
+                    <TeamCard member={it} />
+                  </Reveal>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Stacking Layout for Mobile / Tablet (< lg) */}
+          <div className="flex lg:hidden flex-col items-center w-full space-y-6">
+            {/* GCEO */}
+            <Reveal>
+              <TeamCard member={gceo} />
+            </Reveal>
+            
+            {/* Divider line */}
+            <div className="h-8 w-px bg-gold/30" />
+            
+            {/* Row 2: CBO, COO, CFO */}
+            <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
+              <Reveal delay={0.05}>
+                <TeamCard member={cbo} />
+              </Reveal>
+              <Reveal delay={0.1}>
+                <TeamCard member={coo} />
+              </Reveal>
+              <Reveal delay={0.15}>
+                <TeamCard member={cfo} />
+              </Reveal>
+            </div>
+
+            {/* Divider line */}
+            <div className="h-8 w-px bg-gold/30" />
+
+            {/* Row 3: Legal, Engineering, Secretary, IT */}
+            <div className="flex flex-col md:flex-row flex-wrap gap-6 items-center justify-center">
+              <Reveal delay={0.2}>
+                <TeamCard member={legal} />
+              </Reveal>
+              <Reveal delay={0.25}>
+                <TeamCard member={engineering} />
+              </Reveal>
+              <Reveal delay={0.3}>
+                <TeamCard member={secretary} />
+              </Reveal>
+              <Reveal delay={0.35}>
+                <TeamCard member={it} />
+              </Reveal>
+            </div>
+          </div>
         </div>
       </section>
 

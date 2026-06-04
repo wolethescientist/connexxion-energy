@@ -6,7 +6,7 @@ export const company = {
   legal: "Connexxion Energy Ltd",
   tagline: "Africa's Leading Energy Service Corporation",
   established: 2012,
-  phone: "09133333793",
+  phone: "09161240000",
   email: "info@connexxionenergy.com",
   address: "2A Iller Crescent, Maitama, Abuja, Nigeria",
   parent: "Connexxion Group",
@@ -344,10 +344,17 @@ export type TeamMember = {
 export const team: TeamMember[] = [
   {
     name: "Engr. Maxwell Esan",
-    title: "Group Chief Executive Officer",
+    title: "Chief Executive Officer",
     role: "Executive Leadership",
     initials: "ME",
     image: "/maxwell.jpeg",
+  },
+  {
+    name: "Philip Jegede",
+    title: "Chief Operating Officer",
+    role: "Operations & Execution",
+    initials: "PJ",
+    image: "/philip-jegede.jpeg",
   },
   {
     name: "Rotimi E. Akinniyi",
@@ -358,10 +365,38 @@ export const team: TeamMember[] = [
   },
   {
     name: "Lauretta Chinenye",
-    title: "Head, Business Development",
+    title: "Chief Business Officer",
     role: "Partnerships & Growth",
     initials: "LC",
     image: "/lauretta.jpeg",
+  },
+  {
+    name: "Amos Auta",
+    title: "Engineering Facility Manager",
+    role: "Engineering & Facilities",
+    initials: "AA",
+    image: "/amos.jpeg",
+  },
+  {
+    name: "Barr. Chidiebere Romanus Odo",
+    title: "Company Secretary / Legal Representative",
+    role: "Legal & Governance",
+    initials: "CO",
+    image: "/chidi.jpeg",
+  },
+  {
+    name: "Azahemen Gudu",
+    title: "Secretary to the CEO",
+    role: "Administration",
+    initials: "AG",
+    image: "/azahemen.jpeg",
+  },
+  {
+    name: "Abimbola Ogunmola",
+    title: "IT Manager",
+    role: "Information Technology",
+    initials: "AO",
+    image: "/abimbola.jpeg",
   },
 ];
 
@@ -545,7 +580,7 @@ export const chatbot = {
         "Our team would love to hear from you. You can start a conversation through our contact page, or call us directly.",
       actions: [
         { label: "Contact us", href: "/contact" },
-        { label: "Call 09133333793", href: "tel:09133333793" },
+        { label: "Call 09161240000", href: "tel:09161240000" },
       ],
     },
     {
