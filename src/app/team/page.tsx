@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { CTA } from "@/components/home/CTA";
-import { team } from "@/lib/content";
+import { chairman, team } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Our Team",
@@ -46,19 +47,59 @@ export default function TeamPage() {
             </Reveal>
           </div>
 
-          <RevealGroup stagger={0.07} className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Chairman — featured, centered */}
+          <Reveal delay={0.1} className="mt-16 flex justify-center">
+            <article className="group card-dark w-full max-w-md rounded-2xl p-8 text-center transition-colors duration-300 hover:border-gold/40">
+              {chairman.image ? (
+                <span className="relative mx-auto block h-24 w-24 overflow-hidden rounded-full ring-1 ring-gold/30">
+                  <Image
+                    src={chairman.image}
+                    alt={`${chairman.name}, ${chairman.title}`}
+                    fill
+                    sizes="96px"
+                    className="object-cover"
+                  />
+                </span>
+              ) : (
+                <span className="mx-auto grid h-20 w-20 place-items-center rounded-full bg-gradient-to-br from-gold-soft to-gold font-display text-xl font-semibold text-ink ring-1 ring-gold/30">
+                  {chairman.initials}
+                </span>
+              )}
+              <h3 className="mt-5 font-display text-xl leading-tight text-cream">{chairman.name}</h3>
+              <p className="mt-1.5 text-sm text-gold-soft">{chairman.title}</p>
+              <div className="mx-auto mt-6 h-px w-16 bg-cream/10" />
+              <p className="mx-auto mt-5 max-w-sm text-sm leading-relaxed text-sage">
+                Providing strategic stewardship and governance — guiding Connexxion Energy&rsquo;s
+                long-term vision with integrity and an absolute commitment to stakeholder value.
+              </p>
+            </article>
+          </Reveal>
+
+          <RevealGroup stagger={0.07} className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {team.map((member) => (
               <RevealItem key={member.name}>
                 <article className="group card-dark h-full rounded-2xl p-7 transition-colors duration-300 hover:border-gold/40">
                   <div className="flex items-center gap-4">
-                    <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-gradient-to-br from-brand-bright to-brand-deep font-display text-lg font-semibold text-white ring-1 ring-cream/10">
-                      {member.initials}
-                    </span>
+                    {member.image ? (
+                      <span className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full ring-1 ring-cream/15">
+                        <Image
+                          src={member.image}
+                          alt={`${member.name}, ${member.title}`}
+                          fill
+                          sizes="64px"
+                          className="object-cover"
+                        />
+                      </span>
+                    ) : (
+                      <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-gradient-to-br from-brand-bright to-brand-deep font-display text-lg font-semibold text-white ring-1 ring-cream/10">
+                        {member.initials}
+                      </span>
+                    )}
                     <div>
                       <h3 className="font-display text-lg leading-tight text-cream">
                         {member.name}
                       </h3>
-                      <p className="mt-1 text-sm text-gold-soft">{member.role}</p>
+                      <p className="mt-1 text-sm text-gold-soft">{member.title}</p>
                     </div>
                   </div>
                   <div className="mt-6 h-px w-full bg-cream/10" />

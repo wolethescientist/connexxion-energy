@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { PriceTicker } from "@/components/site/PriceTicker";
+import { Chatbot } from "@/components/site/Chatbot";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -59,6 +60,7 @@ export default function RootLayout({
         </div>
         <main>{children}</main>
         <Footer />
+        <Chatbot />
       </body>
     </html>
   );

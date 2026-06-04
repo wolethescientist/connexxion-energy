@@ -7,7 +7,7 @@ export const company = {
   tagline: "Africa's Leading Energy Service Corporation",
   established: 2012,
   phone: "01-252-5141",
-  email: "info@connexxiongroup.com.ng",
+  email: "info@connexxionenergy.com",
   address: "2A Iller Crescent, Maitama, Abuja, Nigeria",
   parent: "Connexxion Group",
 };
@@ -17,6 +17,7 @@ export const nav = [
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Team", href: "/team" },
+  { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -274,11 +275,259 @@ export const values = [
   },
 ];
 
-export const team = [
-  { name: "Group Managing Director", role: "Executive Leadership", initials: "GMD" },
-  { name: "Executive Director, Operations", role: "Upstream & Midstream", initials: "ED" },
-  { name: "Chief Financial Officer", role: "Finance & Strategy", initials: "CFO" },
-  { name: "Head, Downstream & Trading", role: "Trading & Renewables", initials: "HD" },
-  { name: "Head, HSE & Quality", role: "Health, Safety & Environment", initials: "HSE" },
-  { name: "Head, Business Development", role: "Partnerships & Growth", initials: "BD" },
+export const chairman: TeamMember = {
+  name: "Olorogun O'tega Emerhor",
+  title: "Chairman",
+  role: "Board of Directors",
+  initials: "OE",
+  image: "/emerhor1.jpg",
+};
+
+export type TeamMember = {
+  name: string;
+  title: string;
+  role: string;
+  initials: string;
+  image?: string;
+};
+
+export const team: TeamMember[] = [
+  {
+    name: "Engr. Maxwell Esan",
+    title: "Group Chief Executive Officer",
+    role: "Executive Leadership",
+    initials: "ME",
+    image: "/maxwell.jpeg",
+  },
+  {
+    name: "Rotimi E. Akinniyi",
+    title: "Chief Financial Officer",
+    role: "Finance & Strategy",
+    initials: "RA",
+    image: "/rotimi.jpeg",
+  },
+  {
+    name: "Lauretta Chinenye",
+    title: "Head, Business Development",
+    role: "Partnerships & Growth",
+    initials: "LC",
+    image: "/lauretta.jpeg",
+  },
 ];
+
+/* ---------- Careers ---------- */
+
+export const careersIntro =
+  "Energy is built by people. At Connexxion Energy we bring together engineers, traders, technologists and field crews who want to shape the future of energy across West Africa — with the discipline, safety culture and ambition the work demands.";
+
+export const careerBenefits: { title: string; body: string; icon: string }[] = [
+  {
+    title: "Work that matters",
+    body: "Contribute to projects that power industry and communities across Nigeria and the wider continent.",
+    icon: "bolt",
+  },
+  {
+    title: "Grow your career",
+    body: "Structured development, mentorship and exposure across the full Upstream, Midstream and Downstream value chain.",
+    icon: "growth",
+  },
+  {
+    title: "Safety without compromise",
+    body: "International HSE standards on every site — your wellbeing is the foundation of everything we do.",
+    icon: "shield",
+  },
+  {
+    title: "People-first culture",
+    body: "An indigenous team that values collaboration, integrity and the long-term success of every member.",
+    icon: "heart",
+  },
+  {
+    title: "Modern technology",
+    body: "Sophisticated engineering and reservoir-management tools that let you do your best work responsibly.",
+    icon: "cpu",
+  },
+  {
+    title: "Competitive rewards",
+    body: "Market-leading compensation, benefits and recognition that reflect the value you create.",
+    icon: "handshake",
+  },
+];
+
+export type Opening = {
+  id: string;
+  title: string;
+  department: string;
+  type: "Full-time" | "Contract" | "Internship";
+  location: string;
+  stream: Stream | "Corporate";
+  summary: string;
+};
+
+export const openings: Opening[] = [
+  {
+    id: "reservoir-engineer",
+    title: "Reservoir Engineer",
+    department: "Exploration & Production",
+    type: "Full-time",
+    location: "Abuja, Nigeria",
+    stream: "Upstream",
+    summary:
+      "Lead reservoir characterisation and recovery optimisation across our West African assets using advanced reservoir-management practices.",
+  },
+  {
+    id: "pipeline-integrity-engineer",
+    title: "Pipeline Integrity Engineer",
+    department: "Pipeline Laying & Coating",
+    type: "Full-time",
+    location: "Port Harcourt, Nigeria",
+    stream: "Upstream",
+    summary:
+      "Own the integrity programme for onshore and offshore pipelines — inspection, coating standards and corrosion management.",
+  },
+  {
+    id: "marine-logistics-coordinator",
+    title: "Marine & FPSO Logistics Coordinator",
+    department: "Marine Operations",
+    type: "Full-time",
+    location: "Lagos, Nigeria",
+    stream: "Midstream",
+    summary:
+      "Coordinate vessels, crew and floating storage to keep offshore production and crude movement running safely around the clock.",
+  },
+  {
+    id: "petroleum-products-trader",
+    title: "Petroleum Products Trader",
+    department: "Trading & Renewables",
+    type: "Full-time",
+    location: "Abuja, Nigeria",
+    stream: "Downstream",
+    summary:
+      "Trade gasoline, NGLs and diesel across the region, drawing on market insight to deliver value across the supply chain.",
+  },
+  {
+    id: "renewable-energy-analyst",
+    title: "Renewable Energy Analyst",
+    department: "Renewables",
+    type: "Full-time",
+    location: "Abuja, Nigeria",
+    stream: "Downstream",
+    summary:
+      "Evaluate solar, wind and clean-technology opportunities that position Connexxion — and the continent — for a lower-carbon future.",
+  },
+  {
+    id: "hse-officer",
+    title: "HSE Officer",
+    department: "Health, Safety & Environment",
+    type: "Full-time",
+    location: "Field-based, Nigeria",
+    stream: "Corporate",
+    summary:
+      "Champion our international HSE standards on site, driving a culture where safety is never compromised.",
+  },
+  {
+    id: "graduate-trainee",
+    title: "Graduate Trainee Programme",
+    department: "Early Careers",
+    type: "Internship",
+    location: "Abuja, Nigeria",
+    stream: "Corporate",
+    summary:
+      "A structured rotation across the value chain for ambitious graduates ready to build a career in energy.",
+  },
+];
+
+export const hiringSteps: { step: string; title: string; body: string }[] = [
+  {
+    step: "01",
+    title: "Apply",
+    body: "Submit your details and CV through the form below, or reach out via our virtual assistant.",
+  },
+  {
+    step: "02",
+    title: "Screen",
+    body: "Our talent team reviews your experience against the role and the standards it demands.",
+  },
+  {
+    step: "03",
+    title: "Interview",
+    body: "Meet the team — a conversation about your expertise, values and how you work under pressure.",
+  },
+  {
+    step: "04",
+    title: "Offer",
+    body: "Successful candidates receive an offer and join the Connexxion Energy family.",
+  },
+];
+
+/* ---------- Chatbot knowledge base ---------- */
+
+export type BotEntry = {
+  tags: string[];
+  answer: string;
+  actions?: { label: string; href: string }[];
+};
+
+export const chatbot = {
+  greeting:
+    "Hello, I'm Cira — the Connexxion Energy virtual assistant. Ask me about our services, careers or how to reach the team.",
+  quickReplies: [
+    "What does Connexxion do?",
+    "Careers",
+    "Talk to the team",
+    "Where are you based?",
+  ],
+  knowledge: [
+    {
+      tags: ["service", "services", "do", "offer", "value chain", "upstream", "midstream", "downstream", "what does"],
+      answer:
+        "We operate across the full Oil & Gas value chain — Upstream (exploration, production, pipelines, marine/FPSO), Midstream (facilities, transmission, delivery) and Downstream (trading, renewables, consultancy).",
+      actions: [{ label: "Explore services", href: "/services" }],
+    },
+    {
+      tags: ["career", "careers", "job", "jobs", "hiring", "role", "roles", "vacancy", "vacancies", "work", "apply", "recruit"],
+      answer:
+        "We're growing across engineering, trading, technology and field operations. You can browse open roles and apply directly on our Careers page.",
+      actions: [{ label: "View open roles", href: "/careers" }],
+    },
+    {
+      tags: ["contact", "talk", "team", "reach", "speak", "enquiry", "enquire", "quote", "email", "phone", "call"],
+      answer:
+        "Our team would love to hear from you. You can start a conversation through our contact page, or call us directly.",
+      actions: [
+        { label: "Contact us", href: "/contact" },
+        { label: "Call 01-252-5141", href: "tel:01-252-5141" },
+      ],
+    },
+    {
+      tags: ["location", "based", "where", "address", "office", "abuja", "nigeria", "headquarters"],
+      answer:
+        "Our head office is at 2A Iller Crescent, Maitama, Abuja, Nigeria, with operations across West Africa.",
+      actions: [{ label: "Get directions", href: "/contact" }],
+    },
+    {
+      tags: ["about", "who", "company", "history", "established", "indigenous", "founded"],
+      answer:
+        "Connexxion Energy is a wholly-owned indigenous corporation registered in Nigeria in 2012, committed to stakeholder value through integrated energy solutions.",
+      actions: [{ label: "About us", href: "/about" }],
+    },
+    {
+      tags: ["renewable", "renewables", "solar", "wind", "clean", "green", "sustainable"],
+      answer:
+        "We generate and trade renewable energy — investing in solar, wind and clean technologies for a lower-carbon future.",
+      actions: [{ label: "See renewables", href: "/services" }],
+    },
+    {
+      tags: ["safety", "hse", "health", "environment"],
+      answer:
+        "Safety is non-negotiable. We apply international HSE standards to every operation, every site, every day — without compromise.",
+    },
+  ] as BotEntry[],
+  fallback: {
+    answer:
+      "I'm not certain I caught that, but our team can definitely help. Would you like to get in touch, or browse our services?",
+    actions: [
+      { label: "Contact us", href: "/contact" },
+      { label: "Our services", href: "/services" },
+    ],
+  } as BotEntry,
+};

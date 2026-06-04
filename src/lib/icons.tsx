@@ -151,6 +151,53 @@ export const Icon = {
       <path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" />
     </svg>
   ),
+  briefcase: (p: IconProps) => (
+    <svg {...base(p)}>
+      <rect x="3" y="7" width="18" height="13" rx="2" />
+      <path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" />
+      <path d="M3 12h18" />
+    </svg>
+  ),
+  growth: (p: IconProps) => (
+    <svg {...base(p)}>
+      <path d="M4 18l5-5 3 3 7-7" />
+      <path d="M16 9h4v4" />
+    </svg>
+  ),
+  clock: (p: IconProps) => (
+    <svg {...base(p)}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3 2" />
+    </svg>
+  ),
+  heart: (p: IconProps) => (
+    <svg {...base(p)}>
+      <path d="M12 20s-7-4.4-9.3-8.5C1 8.4 2.6 5 6 5c2 0 3.2 1.2 4 2.4C10.8 6.2 12 5 14 5c3.4 0 5 3.4 3.3 6.5C19 15.6 12 20 12 20z" />
+    </svg>
+  ),
+  spark: (p: IconProps) => (
+    <svg {...base(p)}>
+      <path d="M12 3l1.6 5.4L19 10l-5.4 1.6L12 17l-1.6-5.4L5 10l5.4-1.6z" />
+    </svg>
+  ),
+  chat: (p: IconProps) => (
+    <svg {...base(p)}>
+      <path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H9l-4 4v-4H6a2 2 0 0 1-2-2z" />
+      <path d="M8.5 9.5h7M8.5 12.5h4" />
+    </svg>
+  ),
+  send: (p: IconProps) => (
+    <svg {...base(p)}>
+      <path d="M4 12l16-7-7 16-2.5-6.5z" />
+      <path d="M10.5 14.5L20 5" />
+    </svg>
+  ),
+  user: (p: IconProps) => (
+    <svg {...base(p)}>
+      <circle cx="12" cy="8" r="3.5" />
+      <path d="M5 20a7 7 0 0 1 14 0" />
+    </svg>
+  ),
 } as const;
 
 export type IconName = keyof typeof Icon;
