@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export type Slide = { src: string; alt: string; kicker?: string };
+export type Slide = { src: string; alt: string; kicker?: string; blurDataURL?: string };
 
 export function KenBurns({
   slides,
@@ -43,7 +43,7 @@ export function KenBurns({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="absolute inset-0 animate-kenburns">
             <Image
@@ -51,6 +51,8 @@ export function KenBurns({
               alt={slides[index].alt}
               fill
               priority={index === 0}
+              placeholder={slides[index].blurDataURL ? "blur" : "empty"}
+              blurDataURL={slides[index].blurDataURL}
               sizes="100vw"
               className="object-cover"
             />

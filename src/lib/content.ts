@@ -6,7 +6,7 @@ export const company = {
   legal: "Connexxion Energy Ltd",
   tagline: "Africa's Leading Energy Service Corporation",
   established: 2012,
-  phone: "01-252-5141",
+  phone: "09133333793",
   email: "info@connexxionenergy.com",
   address: "2A Iller Crescent, Maitama, Abuja, Nigeria",
   parent: "Connexxion Group",
@@ -21,31 +21,81 @@ export const nav = [
   { label: "Contact", href: "/contact" },
 ];
 
-export const heroSlides = [
+export const intro =
+  "Connexxion Energy is a key and growing player in the Upstream, Midstream and Downstream sectors of the Oil & Gas industry — and the broader Energy sector across Nigeria and Africa.";
+
+/* Each token with `gold: true` renders as the italic gold accent in the headline.
+   A line is an array of tokens; a headline is an array of lines. */
+export type HeadlineToken = { t: string; gold?: boolean };
+
+export type HeroSlide = {
+  src: string;
+  alt: string;
+  kicker: string;
+  eyebrow: string;
+  headline: HeadlineToken[][];
+  paragraph: string;
+  blurDataURL: string;
+};
+
+export const heroSlides: HeroSlide[] = [
   {
     src: "/images/hero-oilpump.jpg",
     alt: "Oil pump at sunset against an industrial sky",
     kicker: "Upstream",
+    eyebrow: "Upstream · Midstream · Downstream",
+    headline: [
+      [{ t: "Africa’s Leading" }],
+      [{ t: "Energy", gold: true }, { t: " Service" }],
+      [{ t: "Corporation" }],
+    ],
+    paragraph: intro,
+    blurDataURL:
+      "data:image/jpeg;base64,/9j/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAANABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAUGBP/EACMQAAIBAwQBBQAAAAAAAAAAAAECAwAEEQUSIUGxEyIxYaH/xAAVAQEBAAAAAAAAAAAAAAAAAAADAv/EABsRAAMAAgMAAAAAAAAAAAAAAAABAgMUERJB/9oADAMBAAIRAxEAPwBfp9vLDGS8cTQn3M0hwMfRrRMqXVxvkRoowoXe2WC9AE9VP2t2ZGRZl9VVyAGY4GR1VrpuJLS2R1BDuv5yPFDdvG+wqmbXHgrGhlgGR0ZT8Ec+KKZ3+sSWN7NBDDHsDEjjFFVuUHpyf//Z",
   },
   {
     src: "/images/downstream-refinery.jpg",
     alt: "Petrochemical refinery with storage spheres at dusk",
     kicker: "Downstream",
+    eyebrow: "Downstream · Refining & Trading",
+    headline: [
+      [{ t: "Refining, Trading" }],
+      [{ t: "& " }, { t: "Renewables", gold: true }],
+    ],
+    paragraph:
+      "We convert oil and gas into the finished products that power industry — and trade them across the region — while investing in the clean, lower-carbon energy of tomorrow.",
+    blurDataURL:
+      "data:image/jpeg;base64,/9j/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAANABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAYDBAX/xAAiEAACAQQCAQUAAAAAAAAAAAABAgMABBEhBRMGEiIxQVH/xAAVAQEBAAAAAAAAAAAAAAAAAAADAv/EABwRAAICAgMAAAAAAAAAAAAAAAABAxECEhMhMf/aAAwDAQACEQMRAD8A0LHlLZreIO+G9IGd7OKkn5yzjDRrMQ2wMjIJxSHazuvtByFBIBqweXfq6mhiZQfsUDh7ux1Iq8GhvIYlwBEW18jVFKknKOxGIYxr8opOPEjdn//Z",
   },
   {
     src: "/images/midstream-pipeline.jpg",
     alt: "Pipeline network transporting oil and gas",
     kicker: "Midstream",
+    eyebrow: "Midstream · Transport & Power",
+    headline: [
+      [{ t: "Infrastructure" }],
+      [{ t: "that " }, { t: "Moves", gold: true }, { t: " Energy" }],
+    ],
+    paragraph:
+      "Pipelines, marine logistics and transmission networks engineered to connect production to market — moving energy across West Africa with reliability and precision.",
+    blurDataURL:
+      "data:image/jpeg;base64,/9j/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAANABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAYBAgQF/8QAIhAAAgICAQMFAAAAAAAAAAAAAQIDEQASBAUhUTFBYYGR/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgP/xAAYEQADAQEAAAAAAAAAAAAAAAAAASEREv/aAAwDAQACEQMRAD8AZOQ4iCG6GwsWBY+8u83GX1mj/cV5Gd0MjMSYyCL75p4QEvUowwGoNV57e+Jwmqd1HilXaNtl81hkVqABQA+MMOj5R//Z",
   },
   {
     src: "/images/marine-tanker.jpg",
     alt: "Aerial view of an oil tanker at sea",
     kicker: "Marine & FPSO",
+    eyebrow: "Upstream · Marine & FPSO",
+    headline: [
+      [{ t: "Offshore Strength," }],
+      [{ t: "Marine", gold: true }, { t: " Precision" }],
+    ],
+    paragraph:
+      "Vessels, FPSO operations and offshore logistics keep production moving safely — handling crude from the field to the market, around the clock.",
+    blurDataURL:
+      "data:image/jpeg;base64,/9j/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAANABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAUCAwT/xAAfEAACAgICAgMBAAAAAAAAAAABAgADBBEhMRIUMkH/xAAVAQEBAAAAAAAAAAAAAAAAAAAAA//EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAwDAQACEQMRAD8AWNl8dyeQ5pStmP2u+D+xQzFgQZfm5VltdCuRpU40Ndy1qUzGn2oRb5mEaP/Z",
   },
 ];
-
-export const intro =
-  "Connexxion Energy is a key and growing player in the Upstream, Midstream and Downstream sectors of the Oil & Gas industry — and the broader Energy sector across Nigeria and Africa.";
 
 export const aboutParagraphs = [
   "Registered in Nigeria in 2012, Connexxion Energy is a wholly-owned indigenous company with a single aim: to be the preferred player in the energy sector, with an absolute commitment to stakeholder value through integrated business solutions.",
@@ -495,7 +545,7 @@ export const chatbot = {
         "Our team would love to hear from you. You can start a conversation through our contact page, or call us directly.",
       actions: [
         { label: "Contact us", href: "/contact" },
-        { label: "Call 01-252-5141", href: "tel:01-252-5141" },
+        { label: "Call 09133333793", href: "tel:09133333793" },
       ],
     },
     {

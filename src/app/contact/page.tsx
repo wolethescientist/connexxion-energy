@@ -9,7 +9,7 @@ import { Icon } from "@/lib/icons";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Connexxion Energy — 2A Iller Crescent, Maitama, Abuja. Phone 01-252-5141 · info@connexxionenergy.com",
+    "Get in touch with Connexxion Energy — 2A Iller Crescent, Maitama, Abuja. Phone 09133333793 · info@connexxionenergy.com",
 };
 
 const details = [

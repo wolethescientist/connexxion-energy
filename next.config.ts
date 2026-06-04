@@ -6,6 +6,12 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.join(__dirname),
   },
+  images: {
+    // Serve smaller, modern formats when the browser supports them.
+    formats: ["image/avif", "image/webp"],
+    // Cache optimized images for 30 days instead of the 60s default.
+    minimumCacheTTL: 60 * 60 * 24 * 30,
+  },
 };
 
 export default nextConfig;
