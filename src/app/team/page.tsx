@@ -14,14 +14,14 @@ export const metadata: Metadata = {
 
 function TeamCard({ member }: { member: any }) {
   return (
-    <article className="group card-dark w-56 overflow-hidden rounded-2xl border border-cream/10 transition-all duration-300 hover:border-gold/40 hover:-translate-y-0.5 shadow-lg">
+    <article className="group card-dark w-72 overflow-hidden rounded-2xl border border-cream/10 transition-all duration-300 hover:border-gold/40 hover:-translate-y-0.5 shadow-lg">
       <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink-soft">
         {member.image ? (
           <Image
             src={member.image}
             alt={`${member.name}, ${member.title}`}
             fill
-            sizes="224px"
+            sizes="288px"
             className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
           />
         ) : (
@@ -102,7 +102,7 @@ export default function TeamPage() {
               {/* Horizontal connecting bridge */}
               <div className="absolute top-0 left-[16.6%] right-[16.6%] h-px bg-gold/30" />
               
-              <div className="grid grid-cols-3 gap-12 w-full pt-12">
+              <div className="grid grid-cols-3 gap-8 w-full pt-12">
                 {/* CBO */}
                 <div className="flex flex-col items-center relative">
                   {/* Vertical line up to bridge */}
@@ -135,11 +135,11 @@ export default function TeamPage() {
             </div>
 
             {/* Level 3: Legal, Engineering, Secretary, IT */}
-            <div className="relative w-full max-w-5xl flex justify-center">
+            <div className="relative w-full max-w-[76rem] flex justify-center">
               {/* Horizontal connecting bridge */}
               <div className="absolute top-0 left-[12.5%] right-[12.5%] h-px bg-gold/30" />
 
-              <div className="grid grid-cols-4 gap-12 w-full pt-12">
+              <div className="grid grid-cols-4 gap-8 w-full pt-12">
                 {/* Legal / Company Secretary */}
                 <div className="flex flex-col items-center relative">
                   {/* Vertical line up to bridge */}
@@ -149,7 +149,7 @@ export default function TeamPage() {
                   </Reveal>
                 </div>
 
-                {/* Engineering Facility Manager */}
+                {/* Infrastructure Engineer */}
                 <div className="flex flex-col items-center relative">
                   {/* Vertical line up to bridge */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-gold/30" />

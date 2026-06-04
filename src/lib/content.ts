@@ -347,7 +347,7 @@ export const team: TeamMember[] = [
     title: "Chief Executive Officer",
     role: "Executive Leadership",
     initials: "ME",
-    image: "/maxwell.jpeg",
+    image: "/maxwell.png",
   },
   {
     name: "Philip Jegede",
@@ -365,14 +365,14 @@ export const team: TeamMember[] = [
   },
   {
     name: "Lauretta Chinenye",
-    title: "Chief Business Officer",
+    title: "Chief Business Development Officer",
     role: "Partnerships & Growth",
     initials: "LC",
     image: "/lauretta.jpeg",
   },
   {
     name: "Amos Auta",
-    title: "Engineering Facility Manager",
+    title: "Infrastructure Engineer",
     role: "Engineering & Facilities",
     initials: "AA",
     image: "/amos.jpeg",
