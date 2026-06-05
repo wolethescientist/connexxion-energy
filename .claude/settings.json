@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Copy-Item \"C:\\\\Users\\\\david\\\\connexxion_energy\\\\public\\\\abimbola.jpeg\" \"C:\\\\Users\\\\david\\\\connexxion_energy\\\\public\\\\abimbola-ogunmola.jpeg\")"
+    ]
+  }
+}

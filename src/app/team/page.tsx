@@ -49,8 +49,7 @@ export default function TeamPage() {
   const cbo = team[3];
   const engineering = team[4];
   const legal = team[5];
-  const secretary = team[6];
-  const it = team[7];
+  const it = team[6];
 
   return (
     <>
@@ -134,12 +133,12 @@ export default function TeamPage() {
               </div>
             </div>
 
-            {/* Level 3: Legal, Engineering, Secretary, IT */}
-            <div className="relative w-full max-w-[76rem] flex justify-center">
+            {/* Level 3: Legal, Engineering, IT */}
+            <div className="relative w-full max-w-5xl flex justify-center">
               {/* Horizontal connecting bridge */}
-              <div className="absolute top-0 left-[12.5%] right-[12.5%] h-px bg-gold/30" />
+              <div className="absolute top-0 left-[16.6%] right-[16.6%] h-px bg-gold/30" />
 
-              <div className="grid grid-cols-4 gap-8 w-full pt-12">
+              <div className="grid grid-cols-3 gap-8 w-full pt-12">
                 {/* Legal / Company Secretary */}
                 <div className="flex flex-col items-center relative">
                   {/* Vertical line up to bridge */}
@@ -155,15 +154,6 @@ export default function TeamPage() {
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-gold/30" />
                   <Reveal delay={0.25}>
                     <TeamCard member={engineering} />
-                  </Reveal>
-                </div>
-
-                {/* Secretary to the CEO */}
-                <div className="flex flex-col items-center relative">
-                  {/* Vertical line up to bridge */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-gold/30" />
-                  <Reveal delay={0.3}>
-                    <TeamCard member={secretary} />
                   </Reveal>
                 </div>
 
@@ -205,16 +195,13 @@ export default function TeamPage() {
             {/* Divider line */}
             <div className="h-8 w-px bg-gold/30" />
 
-            {/* Row 3: Legal, Engineering, Secretary, IT */}
+            {/* Row 3: Legal, Engineering, IT */}
             <div className="flex flex-col md:flex-row flex-wrap gap-6 items-center justify-center">
               <Reveal delay={0.2}>
                 <TeamCard member={legal} />
               </Reveal>
               <Reveal delay={0.25}>
                 <TeamCard member={engineering} />
-              </Reveal>
-              <Reveal delay={0.3}>
-                <TeamCard member={secretary} />
               </Reveal>
               <Reveal delay={0.35}>
                 <TeamCard member={it} />

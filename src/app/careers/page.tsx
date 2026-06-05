@@ -42,7 +42,7 @@ export default function CareersPage() {
           <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-2xl">
               <Reveal>
-                <Eyebrow>Open positions</Eyebrow>
+                <Eyebrow>Career Opportunity</Eyebrow>
               </Reveal>
               <Reveal delay={0.05}>
                 <h2 className="display-xl mt-6 text-[clamp(2rem,4.4vw,3.2rem)] text-cream">
