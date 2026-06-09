@@ -16,8 +16,20 @@ export function ContactForm() {
     e.preventDefault();
     if (status === "submitting") return;
     setStatus("submitting");
-    // Front-end demo: simulate a send. Wire to an email service / API route to go live.
-    setTimeout(() => setStatus("success"), 1100);
+
+    const formData = new FormData(e.currentTarget);
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const company = String(formData.get("company") ?? "").trim();
+    const message = String(formData.get("message") ?? "").trim();
+
+    const subject = encodeURIComponent(`Enquiry from ${name}${company ? ` - ${company}` : ""}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}${company ? `\nCompany: ${company}` : ""}\n\nMessage:\n${message}`
+    );
+
+    window.location.href = `mailto:info@connexxionenergy.com?subject=${subject}&body=${body}`;
+    setStatus("success");
   }
 
   if (status === "success") {
