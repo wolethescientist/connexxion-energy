@@ -122,13 +122,6 @@ export default function AboutPage() {
               );
             })}
           </RevealGroup>
-
-          <Reveal delay={0.1}>
-            <p className="mt-10 text-sm text-sage/70">
-              Placeholder values shown — share Connexxion Energy&rsquo;s official core values and
-              they&rsquo;ll slot straight in.
-            </p>
-          </Reveal>
         </div>
       </section>
 
