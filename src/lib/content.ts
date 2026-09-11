@@ -354,6 +354,7 @@ export const team: TeamMember[] = [
     title: "Group Chief Operating Officer",
     role: "Operations & Execution",
     initials: "AF",
+    image: "/ayotunde-fatokun.png",
   },
   {
     name: "Rotimi E. Akinniyi",

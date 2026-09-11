@@ -4,7 +4,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { CTA } from "@/components/home/CTA";
-import { team } from "@/lib/content";
+import { team, type TeamMember } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Our Team",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "The leadership steering Connexxion Energy across the Upstream, Midstream and Downstream value chain.",
 };
 
-function TeamCard({ member }: { member: any }) {
+function TeamCard({ member }: { member: TeamMember }) {
   return (
     <article className="group card-dark w-72 overflow-hidden rounded-2xl border border-cream/10 transition-all duration-300 hover:border-gold/40 hover:-translate-y-0.5 shadow-lg">
       <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink-soft">
@@ -43,13 +43,13 @@ function TeamCard({ member }: { member: any }) {
 }
 
 export default function TeamPage() {
-  const gceo = team[0];
-  const coo = team[1];
-  const cfo = team[2];
-  const cbo = team[3];
-  const engineering = team[4];
-  const legal = team[5];
-  const it = team[6];
+  // The organogram is derived from the roster order: the first member is the
+  // top of the tree, everyone after reports into them. Keeping it data-driven
+  // means adding or removing a member never leaves a dangling card.
+  const [gceo, ...directReports] = team;
+  const columns = directReports.length;
+  // Bridge spans centre-of-first-column to centre-of-last: 1/(2n) inset each side.
+  const bridgeInset = `${100 / (columns * 2)}%`;
 
   return (
     <>
@@ -96,75 +96,27 @@ export default function TeamPage() {
               <div className="h-12 w-px bg-gold/30" />
             </div>
 
-            {/* Level 2: CBO, COO, CFO */}
+            {/* Level 2: direct reports */}
             <div className="relative w-full max-w-5xl flex justify-center">
               {/* Horizontal connecting bridge */}
-              <div className="absolute top-0 left-[16.6%] right-[16.6%] h-px bg-gold/30" />
-              
-              <div className="grid grid-cols-3 gap-8 w-full pt-12">
-                {/* CBO */}
-                <div className="flex flex-col items-center relative">
-                  {/* Vertical line up to bridge */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-gold/30" />
-                  <Reveal delay={0.05}>
-                    <TeamCard member={cbo} />
-                  </Reveal>
-                </div>
+              <div
+                className="absolute top-0 h-px bg-gold/30"
+                style={{ left: bridgeInset, right: bridgeInset }}
+              />
 
-                {/* COO */}
-                <div className="flex flex-col items-center relative">
-                  {/* Vertical line up to bridge */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-gold/30" />
-                  <Reveal delay={0.1}>
-                    <TeamCard member={coo} />
-                  </Reveal>
-                  {/* Vertical line down to connect Level 3 */}
-                  <div className="h-12 w-px bg-gold/30" />
-                </div>
-
-                {/* CFO */}
-                <div className="flex flex-col items-center relative">
-                  {/* Vertical line up to bridge */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-gold/30" />
-                  <Reveal delay={0.15}>
-                    <TeamCard member={cfo} />
-                  </Reveal>
-                </div>
-              </div>
-            </div>
-
-            {/* Level 3: Legal, Engineering, IT */}
-            <div className="relative w-full max-w-5xl flex justify-center">
-              {/* Horizontal connecting bridge */}
-              <div className="absolute top-0 left-[16.6%] right-[16.6%] h-px bg-gold/30" />
-
-              <div className="grid grid-cols-3 gap-8 w-full pt-12">
-                {/* Legal / Company Secretary */}
-                <div className="flex flex-col items-center relative">
-                  {/* Vertical line up to bridge */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-gold/30" />
-                  <Reveal delay={0.2}>
-                    <TeamCard member={legal} />
-                  </Reveal>
-                </div>
-
-                {/* Infrastructure Engineer */}
-                <div className="flex flex-col items-center relative">
-                  {/* Vertical line up to bridge */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-gold/30" />
-                  <Reveal delay={0.25}>
-                    <TeamCard member={engineering} />
-                  </Reveal>
-                </div>
-
-                {/* IT Manager */}
-                <div className="flex flex-col items-center relative">
-                  {/* Vertical line up to bridge */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-gold/30" />
-                  <Reveal delay={0.35}>
-                    <TeamCard member={it} />
-                  </Reveal>
-                </div>
+              <div
+                className="grid gap-8 w-full pt-12"
+                style={{ gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))` }}
+              >
+                {directReports.map((member, i) => (
+                  <div key={member.name} className="flex flex-col items-center relative">
+                    {/* Vertical line up to bridge */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-12 bg-gold/30" />
+                    <Reveal delay={0.05 + i * 0.05}>
+                      <TeamCard member={member} />
+                    </Reveal>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -175,37 +127,17 @@ export default function TeamPage() {
             <Reveal>
               <TeamCard member={gceo} />
             </Reveal>
-            
-            {/* Divider line */}
-            <div className="h-8 w-px bg-gold/30" />
-            
-            {/* Row 2: CBO, COO, CFO */}
-            <div className="flex flex-col md:flex-row gap-6 items-center justify-center">
-              <Reveal delay={0.05}>
-                <TeamCard member={cbo} />
-              </Reveal>
-              <Reveal delay={0.1}>
-                <TeamCard member={coo} />
-              </Reveal>
-              <Reveal delay={0.15}>
-                <TeamCard member={cfo} />
-              </Reveal>
-            </div>
 
             {/* Divider line */}
             <div className="h-8 w-px bg-gold/30" />
 
-            {/* Row 3: Legal, Engineering, IT */}
+            {/* Direct reports */}
             <div className="flex flex-col md:flex-row flex-wrap gap-6 items-center justify-center">
-              <Reveal delay={0.2}>
-                <TeamCard member={legal} />
-              </Reveal>
-              <Reveal delay={0.25}>
-                <TeamCard member={engineering} />
-              </Reveal>
-              <Reveal delay={0.35}>
-                <TeamCard member={it} />
-              </Reveal>
+              {directReports.map((member, i) => (
+                <Reveal key={member.name} delay={0.05 + i * 0.05}>
+                  <TeamCard member={member} />
+                </Reveal>
+              ))}
             </div>
           </div>
         </div>
