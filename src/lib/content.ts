@@ -350,11 +350,10 @@ export const team: TeamMember[] = [
     image: "/maxwell esan.png",
   },
   {
-    name: "Philip Jegede",
-    title: "Chief Operating Officer",
+    name: "Mr. Ayotunde Fatokun",
+    title: "Group Chief Operating Officer",
     role: "Operations & Execution",
-    initials: "PJ",
-    image: "/philip-jegede.jpeg",
+    initials: "AF",
   },
   {
     name: "Rotimi E. Akinniyi",
@@ -364,32 +363,11 @@ export const team: TeamMember[] = [
     image: "/rotimi.jpeg",
   },
   {
-    name: "Lauretta Chinenye",
-    title: "Chief Business Development Officer",
-    role: "Partnerships & Growth",
-    initials: "LC",
-    image: "/lauretta.jpeg",
-  },
-  {
-    name: "Amos Auta",
-    title: "Infrastructure Engineer",
-    role: "Engineering & Facilities",
-    initials: "AA",
-    image: "/amos.jpeg",
-  },
-  {
     name: "Barr. Chidiebere Romanus Odo",
     title: "Company Secretary / Legal Representative",
     role: "Legal & Governance",
     initials: "CO",
     image: "/chidi.jpeg",
-  },
-  {
-    name: "Abimbola Ogunmola",
-    title: "IT Manager",
-    role: "Information Technology",
-    initials: "AO",
-    image: "/abimbola-ogunmola.jpeg",
   },
 ];
 
